@@ -25,6 +25,7 @@ adjustHealthBars(chosenMaxLife);
     allows for end of game messages to be initialised in other
     functions by calling this function, instead of retpying 
     lots of the same code over and over.*/
+
 function endRound() {
     const initialPlayerHealth = currentPlayerHealth;
     const monsterAtk = dealPlayerDamage(MONSTER_ATTACK_VALUE);
@@ -40,6 +41,7 @@ function endRound() {
         setPlayerHealth(initialPlayerHealth);
     }
     //added if statements to allow the code to be neater going forward.
+
     if (currentMonsterHealth <= 0 && currentPlayerHealth > 0) {
         alert('You Won!');
     } else if (currentPlayerHealth <= 0 && currentMonsterHealth > 0) {
@@ -62,6 +64,9 @@ function attackMonster(mode) {
 
 function attackHandler() {
     attackMonster('ATTACK');
+    /*calling the attackMonster function where 
+    we passed a 'mode' of attack which calls on the constants 
+    stated at the beggining of the file.*/
 }
 
 function strongAttackHandler() {

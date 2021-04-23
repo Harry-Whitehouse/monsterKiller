@@ -2,7 +2,7 @@
 const ATTACK_VALUE = 10;
 const STRONG_ATTACK_VALUE = 15;
 const HEAL_VALUE = 10;
-const enteredValue = prompt('Max HP for you and the monster.', '100', & #x1F602);
+const enteredValue = prompt('Max HP for you and the monster.', '100');
 
 
 const MONSTER_ATTACK_VALUE = 18;
