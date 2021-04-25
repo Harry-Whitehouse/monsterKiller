@@ -34,7 +34,11 @@ let hasBonusLife = true;
 adjustHealthBars(chosenMaxLife);
 
 function writeToLog(ev, val, monsterHealth, playerHealth) {
+    /* writeToLog function created to allow us to call it where needed,
+    i.e in end of roud, we also added extra parameters where required
+    with dot notation 
 
+    This can be views in the dev tools on the website*/
     let logEntry = {
         event: ev,
         value: val,
@@ -141,16 +145,34 @@ function attackMonster(mode) {
         LOG_EVENT_PLAYER_ATTACK :
         LOG_EVENT_PLAYER_STRONG_ATTACK;
 
-    const playerAtk = dealMonsterDamage(maxDamage);
-    currentMonsterHealth -= playerAtk;
-    writeToLog(
-        logEvent,
-        playerAtk,
-        currentMonsterHealth,
-        currentPlayerHealth
-    );
-    endRound();
+    /* we can often use ternary operators instead of if statements
+    the above code will do the same job as the if statement below,
+
+    ternary operators use a '?' to initialise and then parse the
+    statements after, seprated by ':' in the same way the else
+    part of a if satement would be read. 
+    
+    however, though the ternary operator saves code, its not necassarily
+    as easy to read for a human.*/
+
+    // if (mode === MODE_ATTACK) {
+    //     maxDamage = ATTACK_VALUE;
+    //     logEvent = LOG_EVENT_PLAYER_ATTACK;
+
+    // } else if (mode === MODE_STRONG_ATTACK) {
+    //     maxDamage = STRONG_ATTACK_VALUE;
+    //     logEvent = LOG_EVENT_PLAYER_STRONG_ATTACK;
 }
+
+const playerAtk = dealMonsterDamage(maxDamage);
+currentMonsterHealth -= playerAtk;
+writeToLog(
+    logEvent,
+    playerAtk,
+    currentMonsterHealth,
+    currentPlayerHealth
+);
+endRound();
 
 function attackHandler() {
     attackMonster(MODE_ATTACK);
@@ -182,6 +204,17 @@ function healPlayerHandler() {
 function printLogHandler() {
     console.log(battleLog);
 
+    /*battleLog initialised as an array at the beginning
+     of the document. we then called and pushed it into the logEntry
+     variable, we created inside the writeToLog function.
+     
+     we added params for the logEntry variable and called it 
+     when player attacked, moster attcked, player healed,
+     player used an extra life and when it was game over.
+
+     the log gave told us what was happening step by step - 
+     damge caused, target of the attack and remaining hp etc.
+     */
 }
 
 attackBtn.addEventListener('click', attackHandler);
