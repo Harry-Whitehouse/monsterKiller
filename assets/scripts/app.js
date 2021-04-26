@@ -180,12 +180,12 @@ function healPlayerHandler() {
     endRound();
 }
 
-function printLogHandler() {
-    console.log(battleLog);
+// function printLogHandler() {
+//     console.log(battleLog);
 
-}
+// }
 
 attackBtn.addEventListener('click', attackHandler);
 strongAttackBtn.addEventListener('click', strongAttackHandler);
 healBtn.addEventListener('click', healPlayerHandler);
-logBtn.addEventListener('click', printLogHandler);
+// logBtn.addEventListener('click', printLogHandler);
