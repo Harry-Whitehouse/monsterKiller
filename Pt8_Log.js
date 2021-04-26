@@ -61,7 +61,7 @@ function writeToLog(ev, val, monsterHealth, playerHealth) {
         logEntry
     }
     battleLog.push(logEntry);
-    console.clear(battleLog);
+
     console.table(battleLog);
 }
 
