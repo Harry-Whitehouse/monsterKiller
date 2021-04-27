@@ -1,7 +1,7 @@
 //Monster Killer app
 const ATTACK_VALUE = 10;
 const STRONG_ATTACK_VALUE = 15;
-const HEAL_VALUE = 10;
+const HEAL_VALUE = 20;
 const enteredValue = prompt('Max HP for you and the monster.', '100');
 
 const MODE_ATTACK = 'ATTACK';
@@ -41,6 +41,7 @@ function writeToLog(ev, val, monsterHealth, playerHealth) {
         finalMonsterHealth: monsterHealth,
         finalPlayerHealth: playerHealth,
     }
+
     switch (ev) {
 
         case LOG_EVENT_PLAYER_ATTACK:
@@ -164,8 +165,8 @@ function healPlayerHandler() {
     } else {
         healValue = HEAL_VALUE;
     }
-    increasePlayerHealth(HEAL_VALUE);
-    currentPlayerHealth += HEAL_VALUE;
+    increasePlayerHealth(healValue);
+    currentPlayerHealth += healValue;
     writeToLog(
         LOG_EVENT_PLAYER_HEAL,
         healValue,

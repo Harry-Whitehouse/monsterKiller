@@ -47,6 +47,9 @@ function writeToLog(ev, val, monsterHealth, playerHealth) {
             logEntry.target = 'MONSTER';
             break;
 
+            /*realised that as both modes pof player attack have the same outcome,
+             the statement can be reduced, and allowed to 'fall through' code updated in next part.*/
+
         case LOG_EVENT_PLAYER_STRONG_ATTACK:
             logEntry.target = 'MONSTER';
             break;
