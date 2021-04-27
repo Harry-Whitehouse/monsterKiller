@@ -89,10 +89,10 @@ function endRound() {
         alert(
             `Everyone gets one second chance! 25% HP restored.`
         );
-        currentPlayerHealth = (chosenMaxLife / 4);
-        setPlayerHealth(currentPlayerHealth);
+        setPlayerHealth(enteredValue / 4);
         writeToLog(
             LOG_EVENT_EXTRA_LIFE_USED,
+            'EXTRA LIFE USED',
             currentMonsterHealth,
             currentPlayerHealth
         )
