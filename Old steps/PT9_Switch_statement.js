@@ -59,13 +59,18 @@ function writeToLog(ev, val, monsterHealth, playerHealth) {
             logEntry.target = 'PLAYER';
             break;
 
-        case LOG_EVENT_GAME_OVER:
+        default:
             logEntry;
-            break;
 
-        case LOG_EVENT_EXTRA_LIFE_USED:
-            logEntry;
-            break;
+            //  because the code below had the same output, i changed them to the default switch case.
+            // case LOG_EVENT_GAME_OVER:
+            //     logEntry;
+            //     break;
+
+            // case LOG_EVENT_EXTRA_LIFE_USED:
+            //     logEntry;
+            //     break;
+
 
 
             /*changed the if else statement to a switch statement */
