@@ -67,6 +67,8 @@ function writeToLog(ev, val, monsterHealth, playerHealth) {
             logEntry;
             break;
 
+
+            /*changed the if else statement to a switch statement */
             // }
 
             // if (ev === LOG_EVENT_PLAYER_ATTACK) {
@@ -209,12 +211,6 @@ function healPlayerHandler() {
     endRound();
 }
 
-// function printLogHandler() {
-//     console.log(battleLog);
-
-// }
-
 attackBtn.addEventListener('click', attackHandler);
 strongAttackBtn.addEventListener('click', strongAttackHandler);
 healBtn.addEventListener('click', healPlayerHandler);
-// logBtn.addEventListener('click', printLogHandler);
