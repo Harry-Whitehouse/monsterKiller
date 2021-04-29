@@ -58,7 +58,10 @@ function writeToLog(ev, val, monsterHealth, playerHealth) {
             logEntry;
     }
     battleLog.push(logEntry);
+    // console.clear(battleLog);
+    // console.table(battleLog);
 }
+
 
 function reset() {
     currentMonsterHealth = chosenMaxLife;
@@ -171,15 +174,82 @@ function healPlayerHandler() {
     endRound();
 }
 
+// brought back the log button practice use loops.
+
+
 function printLogHandler() {
+    //forloop
+
+    // for (let i = 0; i < 3; i++) { //'for (let;;)' would create an infinite loop
+    //     console.log('Hello World');
+    // }
+
+    // // while loop
+    // let j = 0 //used j bc i already init in this funct
+    // while (j < 3) {
+    //     console.log('hello world')
+    //     j++
+    // }
+
+    /*do while loop allows you to run the body before
+      the while loop*/
+    let j = 3
+    do {
+        console.log(j)
+        j++;
+    }
+    while (j < 3);
+
+    /*below is a counter loop, - using the for loop function.
+     having the i-- inside the bracket starts the count at 10
+     and count to 1, afterwards would start it 
+     at 9 and count to 0*/
+
+    // for (let i = 10; i > 0;) {
+    //     i--;
+    //     console.log(i);
+    //     // i--;
+    // }
+
+    // for (let i = 0; i < battleLog.length; i++) {
+
+    //     console.log(battleLog[i]);
+    //      //calls the 'ith' elemenet in the battleLog array
+    // }
+
+
+    /*for-of loop - designed specifically for arrays,
+    slightly shorter code that the previous*/
+
+    // for (const logEntry of battleLog) {
+    //     console.log(logEntry);
+    // }
+    /* this doesnt give you access to the index,
+        but you can manually add it by initialising an variable
+        before the loop, then incrementing it and calling it
+        in the console.*/
+    // let i = 0;
+    // for (const logEntry of battleLog) {
+    //     console.log(logEntry);
+    //     console.log(i);
+    //     i++;
+    // }
+
+
+    // for in loop
 
     let i = 0;
     for (const logEntry of battleLog) {
         console.log(`#${i}`);
         for (const key in logEntry) {
             console.log(`${key}=>${logEntry[key]}`);
-            i++;
+            // console.log(logEntry[key]);
+
+            /*you cant use dot notation, because
+             js will try and find a property called 'key',
+             so we use sq brackets*/
         }
+        i++;
     }
 }
 
