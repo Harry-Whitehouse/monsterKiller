@@ -2,7 +2,6 @@
 const ATTACK_VALUE = 10;
 const STRONG_ATTACK_VALUE = 15;
 const HEAL_VALUE = 20;
-const enteredValue = prompt('Max HP for you and the monster.', '100');
 
 const MODE_ATTACK = 'ATTACK';
 const MODE_STRONG_ATTACK = 'STRONG_ATTACK'
@@ -14,16 +13,33 @@ const LOG_EVENT_MONSTER_ATTACK = 'MONSTER_ATTACK';
 const LOG_EVENT_EXTRA_LIFE_USED = 'EXTRA_LIFE_USED';
 const LOG_EVENT_GAME_OVER = 'GAME_OVER';
 
-
 const MONSTER_ATTACK_VALUE = 18;
-
-let chosenMaxLife = +(enteredValue);
 
 let battleLog = [];
 
-if (isNaN(chosenMaxLife) || chosenMaxLife <= 0) {
+let lastLoggedEntry;
+
+
+function getMaxLifeValues() {
+
+    const enteredValue = prompt('Max HP for you and the monster.', '100');
+    const parsedValue = +(enteredValue);
+    if (isNaN(parsedValue) || parsedValue <= 0) {
+        alert(`Life set to 100, noob. "${enteredValue}" is not a number.`);
+
+        throw { message: `Invalid User input, "${enteredValue} is not a number!` };
+        // chosenMaxLife = 100;
+    }
+    return parsedValue
+}
+
+let chosenMaxLife
+
+try {
+    chosenMaxLife = getMaxLifeValues();
+} catch (error) {
+    console.log(error)
     chosenMaxLife = 100;
-    alert('Life set to 100, noob.');
 }
 
 let currentMonsterHealth = chosenMaxLife;
@@ -175,11 +191,19 @@ function printLogHandler() {
 
     let i = 0;
     for (const logEntry of battleLog) {
-        console.log(`#${i}`);
-        for (const key in logEntry) {
-            console.log(`${key}=>${logEntry[key]}`);
-            i++;
+        if (!lastLoggedEntry &&
+            lastLoggedEntry !== 0 ||
+            lastLoggedEntry < i
+        ) {
+            console.log(`#${i}`);
+            for (const key in logEntry) {
+                console.log(`${key}=>${logEntry[key]}`);
+            }
+            lastLoggedEntry = i;
+            break;
+
         }
+        i++;
     }
 }
 
