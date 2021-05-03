@@ -19,18 +19,21 @@ let battleLog = [];
 
 let lastLoggedEntry;
 
+let lifeText = 'Life set to 100';
+let invalidUI = 'Invalid user input!';
 
 function getMaxLifeValues() {
 
     const enteredValue = prompt('Max HP for you and the monster.', '100');
-    const parsedValue = +(enteredValue);
-    if (isNaN(parsedValue) || parsedValue <= 0) {
-        alert(`Life set to 100, noob. "${enteredValue}" is not a number.`);
-
-        throw { message: `Invalid User input, "${enteredValue} is not a number!` };
-        // chosenMaxLife = 100;
+    const parsedValue = +enteredValue;
+    if (isNaN(parsedValue)) {
+        alert(`${lifeText}, noob. "${enteredValue}" is not a number.`);
+        throw { message: `${invalidUI} "${enteredValue} is not a number!` };
+    } else if (parsedValue <= 0) {
+        alert(`${lifeText}.`)
+        throw { message: `${invalidUI}` };
     }
-    return parsedValue
+    return parsedValue;
 }
 
 let chosenMaxLife
